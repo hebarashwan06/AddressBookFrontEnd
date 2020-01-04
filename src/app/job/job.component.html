@@ -1,0 +1,24 @@
+<h2>Jobs List</h2>
+<hr>
+<p>
+  <a [routerLink]="['/CreateJob']" class="btn btn-primary">New Job</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let job of (allJobs | async)">
+      <td>{{job.Title}}</td>
+      <td>  
+        <a [routerLink]="['/EditJob/',job.Id]">Edit</a> |  
+        <a [routerLink]="" (click)="delete(job.Id)">Delete</a>  
+    </td> 
+    </tr>
+  </tbody>
+  
+</table>

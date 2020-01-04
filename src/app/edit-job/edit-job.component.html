@@ -1,0 +1,17 @@
+<form [formGroup]="editForm" novalidate class="form">
+
+    <div class="form-group">
+      <label>Job Title:</label>
+      <input formControlName="Title" placeholder="Job Title" name="Title" class="form-control">
+      <div class="alert  alert-danger" *ngIf="editForm.get('Title').hasError('required') && editForm.get('Title').touched">
+        Job Title is required
+      </div>
+    </div>
+  
+  
+    
+  
+<button class="btn btn-success" [disabled]='editForm.invalid' (click)="onSubmit()">Save</button>
+  
+  
+</form>

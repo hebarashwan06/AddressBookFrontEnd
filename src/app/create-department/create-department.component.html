@@ -1,0 +1,17 @@
+<form [formGroup]="addForm" novalidate class="form">
+
+    <div class="form-group">
+      <label>Department Name:</label>
+      <input formControlName="Name" placeholder="Department Name" name="Name" class="form-control">
+      <div class="alert  alert-danger" *ngIf="addForm.get('Name').hasError('required') && addForm.get('Name').touched">
+        Department Name is required
+      </div>
+    </div>
+  
+  
+    
+  
+    <button class="btn btn-success" [disabled]='addForm.invalid' (click)="onSubmit()">Save</button>
+  
+  
+</form>

@@ -1,0 +1,24 @@
+<h2>Departments List</h2>
+<hr>
+<p>
+  <a [routerLink]="['/CreateDepartment']" class="btn btn-primary">New Department</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let dept of (allDepartments | async)">
+      <td>{{dept.Name}}</td>
+      <td>  
+        <a [routerLink]="['/EditDepartment/',dept.Id]">Edit</a> |  
+        <a [routerLink]="" (click)="delete(dept.Id)">Delete</a>  
+    </td> 
+    </tr>
+  </tbody>
+  
+</table>

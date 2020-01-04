@@ -1,0 +1,54 @@
+<h2>Employees List</h2>
+
+
+<hr>
+<p>
+  <a [routerLink]="['/CreateEmployee']" class="btn btn-primary">New Employee</a>
+</p>
+
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>BirthDate</th>
+      <th>Email</th>
+      <th>Photo</th>
+      <th>Age</th>
+      <th>Department Name</th>
+      <th>Job Title</th>
+      <th>Address</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let empModel of (allEmployees | async | employeefilter:searchText)">
+      <td>{{empModel.employee.FullName}}</td>
+      <td>{{empModel.employee.BirthDate}}</td>
+      <td>{{empModel.employee.Email}}</td>
+      <td>{{empModel.employee.Photo}}</td>
+      <td>{{empModel.employee.Age}}</td>
+      <td>{{empModel.department.Name}}</td>
+      <td>{{empModel.job.Title}}</td>
+      <td>
+          <ul *ngFor="let address of empModel.addresses">
+              <li>{{address.Name}}</li> 
+          </ul>
+      </td>
+      <td>
+        <ul *ngFor="let phone of empModel.phones">
+            <li>{{phone.PhoneNumber}}</li> 
+        </ul>
+    </td>
+
+    <td>  
+        <a [routerLink]="['/EditEmployee/',empModel.employee.Id]">Edit</a> |  
+        <a [routerLink]="" (click)="delete(empModel.employee.Id)">Delete</a>  
+    </td> 
+    </tr>
+  </tbody>
+  
+</table>
